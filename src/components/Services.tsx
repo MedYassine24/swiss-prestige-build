@@ -1,5 +1,6 @@
 import { useIntersectionObserver } from '@/hooks/useAnimations';
 import { Home, Hammer, Wrench, Paintbrush, Triangle, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -7,30 +8,35 @@ const services = [
     title: 'Couverture Premium',
     description: 'Toiture en tuiles, ardoises, zinc. Installation et rénovation complète avec garantie décennale. Isolation thermique incluse.',
     features: ['Tuiles suisses premium', 'Isolation renforcée', 'Garantie 10 ans'],
+    link: '/services#couverture',
   },
   {
     icon: Hammer,
     title: 'Zinguerie de Précision',
     description: "Gouttières, chéneaux, habillages zinc. Travail artisanal du métal avec finitions impeccables. Étanchéité garantie.",
     features: ['Zinc naturel ou pré-patiné', 'Soudure traditionnelle', 'Sans entretien'],
+    link: '/services#zinguerie',
   },
   {
     icon: Wrench,
     title: 'Rénovation Totale',
     description: 'Transformation complète de votre propriété. De la toiture aux façades, nous gérons tout. Clé en main, sans souci.',
     features: ['Gestion complète', 'Respect des délais', 'Budget maîtrisé'],
+    link: '/services#renovation',
   },
   {
     icon: Paintbrush,
     title: 'Habillage Façade',
     description: 'Bardage bois, crépis, parement pierre. Embellissez et protégez votre bâtiment avec des matériaux nobles et durables.',
     features: ['Matériaux écologiques', 'Design personnalisé', 'Isolation intégrée'],
+    link: '/services#facade',
   },
   {
     icon: Triangle,
     title: 'Charpente Traditionnelle',
     description: 'Charpente bois massif, fermettes, extensions. Savoir-faire ancestral rencontrant techniques modernes.',
     features: ['Bois certifié FSC', 'Calculs de charge', 'Pose traditionnelle'],
+    link: '/services#charpente',
   },
 ];
 
@@ -124,17 +130,13 @@ function ServiceCard({ service, index, isVisible }: ServiceCardProps) {
       </ul>
 
       {/* Link */}
-      <a 
-        href="#contact"
-        onClick={(e) => {
-          e.preventDefault();
-          document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-        }}
+      <Link 
+        to={service.link}
         className="inline-flex items-center gap-2 text-gold text-sm font-medium hover:gap-3 transition-all"
       >
         En savoir plus
         <ArrowRight className="w-4 h-4" />
-      </a>
+      </Link>
     </div>
   );
 }
