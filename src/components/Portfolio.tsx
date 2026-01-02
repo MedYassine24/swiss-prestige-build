@@ -1,67 +1,73 @@
 import { useState } from 'react';
 import { useIntersectionObserver } from '@/hooks/useAnimations';
-import { X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, MapPin, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 // Import project images
+import project1 from '@/assets/projects/project-new-1.jpg';
+import project2 from '@/assets/projects/project-new-2.jpg';
+import project3 from '@/assets/projects/project-new-3.jpg';
 import project4 from '@/assets/projects/project-4.jpg';
 import project5 from '@/assets/projects/project-5.jpg';
 import project6 from '@/assets/projects/project-6.jpg';
-import project7 from '@/assets/projects/project-7.jpg';
-import project8 from '@/assets/projects/project-8.jpg';
-import project9 from '@/assets/projects/project-9.jpg';
 
-const categories = ['Tous', 'Couverture', 'Rénovation', 'Zinguerie'];
+const categories = ['Tous', 'Construction', 'Investissement', 'Rénovation'];
 
 const projects = [
   {
     id: 1,
-    image: project4,
-    title: 'Couverture Tuiles Terra Cotta',
-    location: 'Carouge, Genève',
-    category: 'Couverture',
-    description: 'Réfection complète de toiture avec tuiles premium terra cotta et fenêtres de toit Velux.',
+    image: project1,
+    title: 'Toiture Ardoise & Cuivre',
+    location: 'Collonge-Bellerive, Genève',
+    category: 'Rénovation',
+    description: 'Rénovation de toiture haut de gamme avec ardoises naturelles et finitions en cuivre. Intégration parfaite de fenêtres de toit.',
+    yield: null,
   },
   {
     id: 2,
-    image: project5,
-    title: 'Zinguerie Architecturale',
-    location: 'Lancy, Genève',
-    category: 'Zinguerie',
-    description: 'Installation de zinguerie sur-mesure avec finitions artisanales et étanchéité parfaite.',
+    image: project2,
+    title: 'Réfection Complète',
+    location: 'Veyrier, Genève',
+    category: 'Construction',
+    description: 'Installation d\'une couverture moderne en tuiles plates anthracites avec système d\'étanchéité renforcé.',
+    yield: null,
   },
   {
     id: 3,
-    image: project6,
-    title: 'Rénovation Toiture Complète',
-    location: 'Onex, Genève',
-    category: 'Rénovation',
-    description: 'Transformation totale incluant isolation thermique et double vitrage.',
+    image: project3,
+    title: 'Villa Contemporaine',
+    location: 'Cologny, Genève',
+    category: 'Construction',
+    description: 'Construction neuve avec toiture technique intégrant des panneaux solaires invisibles et ferblanterie zinc.',
+    yield: null,
   },
   {
     id: 4,
-    image: project7,
-    title: 'Couverture & Zinguerie',
-    location: 'Plan-les-Ouates',
-    category: 'Couverture',
-    description: 'Projet combinant couverture premium et travaux de zinguerie complexes.',
+    image: project4,
+    title: 'Complexe Résidentiel',
+    location: 'Nyon, Vaud',
+    category: 'Investissement',
+    description: 'Projet de 24 unités avec espaces verts et parkings souterains. Rendement attractif et valorisation garantie.',
+    yield: '4.5%',
   },
   {
     id: 5,
-    image: project8,
-    title: 'Lucarne Zinc Premium',
-    location: 'Vernier, Genève',
-    category: 'Zinguerie',
-    description: 'Habillage de lucarne en zinc avec finitions cuivre et étanchéité garantie.',
+    image: project5,
+    title: 'Résidence Les Terrasses',
+    location: 'Lausanne, Vaud',
+    category: 'Investissement',
+    description: 'Immeuble de 12 appartements avec rendement locatif garanti à 5% sur 10 ans. Emplacement premium.',
+    yield: '5%',
   },
   {
     id: 6,
-    image: project9,
-    title: 'Fenêtre de Toit Cuivre',
-    location: 'Thônex, Genève',
+    image: project6,
+    title: 'Rénovation Prestige',
+    location: 'Genève Centre',
     category: 'Rénovation',
-    description: 'Abergement Velux en cuivre sur couverture tuiles Alpha 10 ardoises grises.',
+    description: 'Transformation complète d\'un appartement historique de 200m² en duplex moderne de standing.',
+    yield: null,
   },
 ];
 
@@ -74,13 +80,13 @@ export function Portfolio() {
     project => activeCategory === 'Tous' || project.category === activeCategory
   );
 
-  const currentIndex = selectedProject 
+  const currentIndex = selectedProject
     ? filteredProjects.findIndex(p => p.id === selectedProject.id)
     : -1;
 
   const navigateProject = (direction: 'prev' | 'next') => {
     if (!selectedProject) return;
-    const newIndex = direction === 'next' 
+    const newIndex = direction === 'next'
       ? (currentIndex + 1) % filteredProjects.length
       : (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
     setSelectedProject(filteredProjects[newIndex]);
@@ -90,11 +96,10 @@ export function Portfolio() {
     <section id="portfolio" className="py-20 md:py-32 bg-light-grey text-charcoal">
       <div className="container mx-auto px-4 md:px-8">
         {/* Section Header */}
-        <div 
+        <div
           ref={ref}
-          className={`text-center mb-12 transition-all duration-700 ${
-            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`text-center mb-12 transition-all duration-700 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <span className="inline-block text-gold-dark font-montserrat text-sm font-semibold uppercase tracking-wider mb-4">
             Portfolio
@@ -103,23 +108,21 @@ export function Portfolio() {
             Nos <span className="text-gradient-gold">Réalisations</span>
           </h2>
           <p className="text-charcoal/70 max-w-2xl mx-auto">
-            Découvrez notre savoir-faire à travers nos projets récents
+            Découvrez nos projets immobiliers d'exception : construction sur mesure, investissements à rendement garanti et rénovations de prestige
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className={`flex flex-wrap justify-center gap-2 mb-12 transition-all duration-700 delay-200 ${
-          isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`flex flex-wrap justify-center gap-2 mb-12 transition-all duration-700 delay-200 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full font-montserrat text-sm font-medium transition-all ${
-                activeCategory === category
-                  ? 'bg-gold text-background'
-                  : 'bg-charcoal/5 text-charcoal/70 hover:bg-charcoal/10'
-              }`}
+              className={`px-5 py-2 rounded-full font-montserrat text-sm font-medium transition-all ${activeCategory === category
+                ? 'bg-gold text-background'
+                : 'bg-charcoal/5 text-charcoal/70 hover:bg-charcoal/10'
+                }`}
             >
               {category}
             </button>
@@ -132,9 +135,8 @@ export function Portfolio() {
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-500 ${
-                isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-500 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
               style={{ transitionDelay: `${(index + 2) * 100}ms` }}
             >
               {/* Image */}
@@ -174,9 +176,8 @@ export function Portfolio() {
         </div>
 
         {/* CTA */}
-        <div className={`text-center mt-12 transition-all duration-700 delay-500 ${
-          isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+        <div className={`text-center mt-12 transition-all duration-700 delay-500 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
           <Link to="/portfolio">
             <Button variant="gold" size="lg">
               Voir Tous Nos Projets
@@ -187,11 +188,11 @@ export function Portfolio() {
 
       {/* Lightbox Modal */}
       {selectedProject && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/95 backdrop-blur-xl animate-fade-in"
           onClick={() => setSelectedProject(null)}
         >
-          <div 
+          <div
             className="relative max-w-5xl w-full bg-card rounded-2xl overflow-hidden animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >

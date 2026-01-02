@@ -1,41 +1,42 @@
 import { useIntersectionObserver } from '@/hooks/useAnimations';
-import { Home, Hammer, Wrench, Paintbrush, Triangle, ArrowRight } from 'lucide-react';
+import { ArrowRight, Building2, Check, Home, Shield, TrendingUp, Paintbrush, Hammer, Umbrella } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const services = [
   {
     icon: Home,
-    title: 'Couverture Premium',
-    description: 'Toiture en tuiles, ardoises, zinc. Installation et rénovation complète avec garantie décennale. Isolation thermique incluse.',
-    features: ['Tuiles suisses premium', 'Isolation renforcée', 'Garantie 10 ans'],
+    title: 'Couverture',
+    description: 'Expertise complète en toiture : tuiles, ardoises, et toitures plates. Nous assurons une protection durable et esthétique de votre bâtiment.',
+    features: ['Tuiles & Ardoises', 'Étanchéité', 'Isolation toiture'],
     link: '/services#couverture',
   },
   {
-    icon: Hammer,
-    title: 'Zinguerie de Précision',
-    description: "Gouttières, chéneaux, habillages zinc. Travail artisanal du métal avec finitions impeccables. Étanchéité garantie.",
-    features: ['Zinc naturel ou pré-patiné', 'Soudure traditionnelle', 'Sans entretien'],
+    icon: Umbrella,
+    title: 'Zinguerie',
+    description: 'Travaux de ferblanterie et zinguerie pour une évacuation optimale des eaux. Finitions soignées en cuivre, zinc et inox.',
+    features: ['Gouttières & Chéneaux', 'Habillage de lucarnes', 'Finitions cuivre/zinc'],
     link: '/services#zinguerie',
   },
   {
-    icon: Wrench,
-    title: 'Rénovation Totale',
-    description: 'Transformation complète de votre propriété. De la toiture aux façades, nous gérons tout. Clé en main, sans souci.',
-    features: ['Gestion complète', 'Respect des délais', 'Budget maîtrisé'],
+    icon: Building2,
+    title: 'Rénovation',
+    description: 'Rénovation globale ou partielle de votre habitat. Nous donnons une seconde vie à votre propriété avec des matériaux de qualité.',
+    features: ['Réfection complète', 'Modernisation', 'Valorisation du bien'],
     link: '/services#renovation',
   },
   {
-    icon: Paintbrush,
-    title: 'Habillage Façade',
-    description: 'Bardage bois, crépis, parement pierre. Embellissez et protégez votre bâtiment avec des matériaux nobles et durables.',
-    features: ['Matériaux écologiques', 'Design personnalisé', 'Isolation intégrée'],
-    link: '/services#facade',
+    icon: Shield,
+    title: 'Habillage',
+    description: 'Solutions d\'habillage de façades et sous-faces de toiture. Protection contre les intempéries et amélioration de l\'esthétique.',
+    features: ['Façades ventilées', 'Planches de rive', 'Soffites'],
+    link: '/services#habillage',
   },
   {
-    icon: Triangle,
-    title: 'Charpente Traditionnelle',
-    description: 'Charpente bois massif, fermettes, extensions. Savoir-faire ancestral rencontrant techniques modernes.',
-    features: ['Bois certifié FSC', 'Calculs de charge', 'Pose traditionnelle'],
+    icon: Hammer,
+    title: 'Charpente',
+    description: 'Construction et modification de charpentes traditionnelles. Traitement des bois et renforcement de structures.',
+    features: ['Charpente traditionnelle', 'Modification de structure', 'Traitement du bois'],
     link: '/services#charpente',
   },
 ];
@@ -47,14 +48,13 @@ export function Services() {
     <section id="services" className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-gold/50 to-transparent" />
-      
+
       <div className="container mx-auto px-4 md:px-8">
         {/* Section Header */}
-        <div 
+        <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
-            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`text-center mb-16 transition-all duration-700 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <span className="inline-block text-gold font-montserrat text-sm font-semibold uppercase tracking-wider mb-4">
             Nos Expertises
@@ -72,9 +72,9 @@ export function Services() {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
-            <ServiceCard 
-              key={service.title} 
-              service={service} 
+            <ServiceCard
+              key={service.title}
+              service={service}
               index={index}
               isVisible={isIntersecting}
             />
@@ -96,14 +96,13 @@ function ServiceCard({ service, index, isVisible }: ServiceCardProps) {
 
   return (
     <div
-      className={`group relative p-8 rounded-xl glass border border-border/50 premium-card transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
+      className={`group relative p-8 rounded-xl glass border border-border/50 premium-card transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* Gold accent line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      
+
       {/* Icon */}
       <div className="w-14 h-14 rounded-lg bg-gold/10 flex items-center justify-center mb-6 transition-all group-hover:bg-gold/20 group-hover:scale-110">
         <Icon className="w-7 h-7 text-gold" />
@@ -130,7 +129,7 @@ function ServiceCard({ service, index, isVisible }: ServiceCardProps) {
       </ul>
 
       {/* Link */}
-      <Link 
+      <Link
         to={service.link}
         className="inline-flex items-center gap-2 text-gold text-sm font-medium hover:gap-3 transition-all"
       >

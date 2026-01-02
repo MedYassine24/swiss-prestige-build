@@ -1,10 +1,10 @@
 import { useIntersectionObserver } from '@/hooks/useAnimations';
 import { Button } from '@/components/ui/button';
-import { 
-  Send, 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  Send,
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   Instagram,
   Facebook,
@@ -32,7 +32,7 @@ export function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -48,7 +48,7 @@ export function Contact() {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) newErrors.name = 'Nom requis';
     if (!formData.email.trim()) newErrors.email = 'Email requis';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -67,17 +67,17 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     setIsSubmitting(false);
     setIsSuccess(true);
-    
+
     toast({
       title: "Message envoyé!",
       description: "Nous vous recontacterons sous 24h.",
@@ -94,14 +94,13 @@ export function Contact() {
     <section id="contact" className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-      
+
       <div className="container mx-auto px-4 md:px-8">
         {/* Section Header */}
-        <div 
+        <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
-            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`text-center mb-16 transition-all duration-700 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <span className="inline-block text-gold font-montserrat text-sm font-semibold uppercase tracking-wider mb-4">
             Contact
@@ -116,9 +115,8 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Contact Form */}
-          <div className={`transition-all duration-700 delay-200 ${
-            isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
+          <div className={`transition-all duration-700 delay-200 ${isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}>
             <div className="glass p-8 md:p-10 rounded-2xl border border-border/50">
               <h3 className="font-montserrat text-2xl font-bold mb-2">
                 Demandez Votre Devis Gratuit
@@ -195,7 +193,7 @@ export function Contact() {
                         <option value="couverture">Couverture</option>
                         <option value="zinguerie">Zinguerie</option>
                         <option value="renovation">Rénovation</option>
-                        <option value="facade">Façade</option>
+                        <option value="habillage">Habillage</option>
                         <option value="charpente">Charpente</option>
                         <option value="autre">Autre</option>
                       </select>
@@ -259,16 +257,16 @@ export function Contact() {
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
                     />
                     <label htmlFor="consent" className="text-sm text-muted-foreground">
-                      J'accepte d'être contacté par Swiss Habitat Group *
+                      J'accepte d'être contacté par Swiss Prestige Build *
                     </label>
                   </div>
                   {errors.consent && <p className="text-destructive text-xs">{errors.consent}</p>}
 
                   {/* Submit */}
-                  <Button 
-                    type="submit" 
-                    variant="gold" 
-                    size="xl" 
+                  <Button
+                    type="submit"
+                    variant="gold"
+                    size="xl"
                     className="w-full"
                     disabled={isSubmitting}
                   >
@@ -290,9 +288,8 @@ export function Contact() {
           </div>
 
           {/* Contact Info */}
-          <div className={`transition-all duration-700 delay-400 ${
-            isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
+          <div className={`transition-all duration-700 delay-400 ${isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}>
             <h3 className="font-montserrat text-2xl font-bold mb-8">
               Contactez-Nous
             </h3>
@@ -319,8 +316,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Téléphone</h4>
-                  <a 
-                    href="tel:+41000000000" 
+                  <a
+                    href="tel:+41000000000"
                     className="text-gold hover:underline text-sm"
                   >
                     +41 XX XXX XX XX
@@ -339,11 +336,11 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
-                  <a 
-                    href="mailto:contact@swisshabitat.ch" 
+                  <a
+                    href="mailto:contact@swissprestigebuild.ch"
                     className="text-gold hover:underline text-sm"
                   >
-                    contact@swisshabitat.ch
+                    contact@swissprestigebuild.ch
                   </a>
                 </div>
               </div>
@@ -353,24 +350,24 @@ export function Contact() {
             <div className="mb-10">
               <h4 className="font-semibold mb-4">Suivez-nous</h4>
               <div className="flex gap-3">
-                <a 
-                  href="https://instagram.com/swisshabitatgroup" 
-                  target="_blank" 
+                <a
+                  href="#"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-background transition-all hover:scale-110"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-background transition-all hover:scale-110"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a 
-                  href="#" 
+                <a
+                  href="#"
                   className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-background transition-all hover:scale-110"
                   aria-label="LinkedIn"
                 >
@@ -389,7 +386,7 @@ export function Contact() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Swiss Habitat Group Location"
+                title="Swiss Prestige Build Location"
               />
             </div>
 

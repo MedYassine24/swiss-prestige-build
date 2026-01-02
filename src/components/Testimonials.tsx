@@ -5,51 +5,48 @@ import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    quote: "Travail impeccable sur notre toiture. L'équipe est professionnelle, ponctuelle et soigneuse. Le résultat dépasse nos attentes. Je recommande vivement!",
-    name: 'Marie & Pierre L.',
-    location: 'Carouge, Genève',
-    initials: 'ML',
+    quote: "Un travail d'orfèvre sur notre toiture en ardoise. L'équipe a été ponctuelle, propre et très professionnelle. Le résultat dépasse nos attentes.",
+    name: 'Jean-Pierre Dubuis',
+    location: 'Collonge-Bellerive',
+    initials: 'JD',
     rating: 5,
+    type: 'Rénovation Toiture',
   },
   {
     id: 2,
-    quote: 'Rénovation complète de notre façade. Conseil expert, matériaux de qualité, finitions parfaites. Swiss Habitat Group a transformé notre maison!',
-    name: 'Jean-Marc B.',
-    location: 'Lancy, Genève',
-    initials: 'JB',
+    quote: "J'ai fait appel à Swiss Prestige Build pour la ferblanterie d'une villa. La précision des finitions en cuivre est remarquable. Je recommande vivement.",
+    name: 'Marie L.',
+    location: 'Genève, Champel',
+    initials: 'ML',
     rating: 5,
+    type: 'Zinguerie',
   },
   {
     id: 3,
-    quote: "Charpente refaite à neuf avec une rapidité surprenante. Équipe sympathique et compétente. Prix correct pour une qualité suisse irréprochable.",
-    name: 'Sophie T.',
-    location: 'Onex, Genève',
-    initials: 'ST',
+    quote: "La rénovation de notre charpente était un défi technique. Ils ont su trouver les solutions adaptées tout en respectant le cachet de la maison.",
+    name: 'Marc & Sophie T.',
+    location: 'Nyon',
+    initials: 'MS',
     rating: 5,
+    type: 'Charpente',
   },
   {
     id: 4,
-    quote: 'Zinguerie et gouttières installées. Travail soigné, chantier propre. Communication excellente du début à la fin. Bravo!',
-    name: 'François M.',
-    location: 'Plan-les-Ouates',
-    initials: 'FM',
+    quote: "Intervention rapide et efficace pour l'étanchéité de notre toiture plate. Plus aucune fuite et une finition esthétique parfaite.",
+    name: 'Thomas R.',
+    location: 'Lausanne',
+    initials: 'TR',
     rating: 5,
+    type: 'Étanchéité',
   },
   {
     id: 5,
-    quote: 'Projet de A à Z géré parfaitement. Devis respecté, délais tenus. On se sent en confiance avec Swiss Habitat Group.',
-    name: 'Isabelle & Marc D.',
-    location: 'Vernier, Genève',
-    initials: 'ID',
+    quote: "L'habillage des sous-faces de toiture en aluminium a transformé l'aspect de notre maison. Un grand bravo pour le conseil et la réalisation.",
+    name: 'Isabelle V.',
+    location: 'Veyrier',
+    initials: 'IV',
     rating: 5,
-  },
-  {
-    id: 6,
-    quote: 'La meilleure entreprise de couverture de Genève! Professionnalisme, qualité, ponctualité. Nous sommes ravis du résultat.',
-    name: 'Thomas R.',
-    location: 'Thônex, Genève',
-    initials: 'TR',
-    rating: 5,
+    type: 'Habillage',
   },
 ];
 
@@ -72,7 +69,7 @@ export function Testimonials() {
   // Auto-rotate
   useEffect(() => {
     if (isPaused || !isIntersecting) return;
-    
+
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
   }, [isPaused, isIntersecting, next]);
@@ -81,11 +78,10 @@ export function Testimonials() {
     <section id="testimonials" className="py-20 md:py-32 bg-light-grey text-charcoal overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
         {/* Section Header */}
-        <div 
+        <div
           ref={ref}
-          className={`text-center mb-16 transition-all duration-700 ${
-            isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`text-center mb-16 transition-all duration-700 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <span className="inline-block text-gold-dark font-montserrat text-sm font-semibold uppercase tracking-wider mb-4">
             Témoignages
@@ -99,7 +95,7 @@ export function Testimonials() {
         </div>
 
         {/* Carousel */}
-        <div 
+        <div
           className="relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -122,16 +118,15 @@ export function Testimonials() {
 
           {/* Cards Container */}
           <div className="overflow-hidden mx-8 md:mx-16">
-            <div 
+            <div
               className="flex gap-6 transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView + 2)}%)` }}
             >
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
-                  className={`flex-shrink-0 w-full lg:w-[calc(33.333%-1rem)] transition-all duration-500 ${
-                    isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
+                  className={`flex-shrink-0 w-full lg:w-[calc(33.333%-1rem)] transition-all duration-500 ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="bg-white p-8 rounded-xl shadow-lg h-full flex flex-col">
@@ -178,11 +173,10 @@ export function Testimonials() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${
-                  currentIndex === index 
-                    ? 'bg-gold w-8' 
-                    : 'bg-charcoal/20 hover:bg-charcoal/40'
-                }`}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${currentIndex === index
+                  ? 'bg-gold w-8'
+                  : 'bg-charcoal/20 hover:bg-charcoal/40'
+                  }`}
                 aria-label={`Aller au témoignage ${index + 1}`}
               />
             ))}

@@ -11,10 +11,10 @@ const navLinks = [
 ];
 
 const certifications = [
-  'ISO 9001 Certified',
-  'Garantie Décennale',
-  'Association Suisse des Couvreurs',
-  'Assurance RC Complète',
+  'Entreprise Suisse Certifiée',
+  'Membre USPI',
+  'Garantie Financière',
+  'Assurance RC Pro',
 ];
 
 export function Footer() {
@@ -30,31 +30,31 @@ export function Footer() {
               <Logo size="lg" />
             </div>
             <p className="text-sm text-gold font-montserrat font-medium mb-4">
-              Excellence Suisse en Construction
+              Excellence Immobilière Suisse
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Votre partenaire de confiance pour tous vos projets de construction 
-              et rénovation à Genève.
+              Votre partenaire de confiance pour la construction sur mesure
+              et les solutions de rendement à taux fixe en Suisse.
             </p>
             <div className="flex gap-3">
-              <a 
-                href="https://instagram.com/swisshabitatgroup" 
-                target="_blank" 
+              <a
+                href="https://instagram.com/swisshabitatgroup"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-background transition-all"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-background transition-all"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-background transition-all"
                 aria-label="LinkedIn"
               >
@@ -124,7 +124,7 @@ export function Footer() {
         <div className="border-t border-gold/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm">
-              © {currentYear} Swiss Habitat Group SA. Tous droits réservés.
+              © {currentYear} Swiss Prestige Build SA. Tous droits réservés. <span className="hidden md:inline">|</span> <span className="block md:inline mt-2 md:mt-0">Réalisé par <a href="https://ty-dev.site" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline font-medium">TY Dev</a></span>
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-muted-foreground hover:text-gold text-sm">
