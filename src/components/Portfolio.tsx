@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useIntersectionObserver } from '@/hooks/useAnimations';
 import { X, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 // Import project images
 import project4 from '@/assets/projects/project-4.jpg';
@@ -11,7 +12,7 @@ import project7 from '@/assets/projects/project-7.jpg';
 import project8 from '@/assets/projects/project-8.jpg';
 import project9 from '@/assets/projects/project-9.jpg';
 
-const categories = ['Tous', 'Couverture', 'Rénovation', 'Zinguerie', 'Façade', 'Charpente'];
+const categories = ['Tous', 'Couverture', 'Rénovation', 'Zinguerie'];
 
 const projects = [
   {
@@ -176,13 +177,11 @@ export function Portfolio() {
         <div className={`text-center mt-12 transition-all duration-700 delay-500 ${
           isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <Button 
-            variant="gold" 
-            size="lg"
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Discutons de Votre Projet
-          </Button>
+          <Link to="/portfolio">
+            <Button variant="gold" size="lg">
+              Voir Tous Nos Projets
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -246,15 +245,11 @@ export function Portfolio() {
                 <p className="text-foreground/80 leading-relaxed mb-8">
                   {selectedProject.description}
                 </p>
-                <Button 
-                  variant="gold"
-                  onClick={() => {
-                    setSelectedProject(null);
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Demander un Projet Similaire
-                </Button>
+                <Link to="/contact" onClick={() => setSelectedProject(null)}>
+                  <Button variant="gold">
+                    Demander un Projet Similaire
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

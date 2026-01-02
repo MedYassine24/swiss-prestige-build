@@ -1,13 +1,13 @@
 import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin } from 'lucide-react';
-import logo from '@/assets/logo.jpg';
+import { Logo } from '@/components/Logo';
+import { Link } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'Accueil', href: '#hero' },
-  { label: 'Services', href: '#services' },
-  { label: 'Réalisations', href: '#portfolio' },
-  { label: 'À Propos', href: '#about' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'Devis Gratuit', href: '#contact' },
+  { label: 'Accueil', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Réalisations', href: '/portfolio' },
+  { label: 'À Propos', href: '/a-propos' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const certifications = [
@@ -20,24 +20,15 @@ const certifications = [
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <img 
-              src={logo} 
-              alt="Swiss Habitat Group" 
-              className="h-10 w-auto mb-4"
-            />
+            <div className="mb-4">
+              <Logo size="lg" />
+            </div>
             <p className="text-sm text-gold font-montserrat font-medium mb-4">
               Excellence Suisse en Construction
             </p>
@@ -77,17 +68,13 @@ export function Footer() {
             <h4 className="font-montserrat font-bold text-lg mb-6">Navigation</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
-                <li key={link.href + link.label}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
                     className="text-muted-foreground hover:text-gold transition-colors text-sm gold-underline inline-block"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

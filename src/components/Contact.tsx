@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useIntersectionObserver } from '@/hooks/useAnimations';
 import { Button } from '@/components/ui/button';
 import { 
@@ -7,7 +6,6 @@ import {
   Phone, 
   Mail, 
   Clock,
-  AlertCircle,
   Instagram,
   Facebook,
   Linkedin,
@@ -15,6 +13,8 @@ import {
   Loader2
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type FormData = {
   name: string;
@@ -347,22 +347,6 @@ export function Contact() {
                   </a>
                 </div>
               </div>
-
-              {/* Emergency */}
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                  <AlertCircle className="w-5 h-5 text-destructive" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Urgences 24/7</h4>
-                  <a 
-                    href="tel:+41000000000" 
-                    className="text-destructive hover:underline text-sm"
-                  >
-                    +41 XX XXX XX XX
-                  </a>
-                </div>
-              </div>
             </div>
 
             {/* Social Media */}
@@ -407,6 +391,13 @@ export function Contact() {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Swiss Habitat Group Location"
               />
+            </div>
+
+            {/* CTA to full page */}
+            <div className="mt-8 text-center">
+              <Link to="/contact" className="text-gold hover:underline text-sm font-medium">
+                Voir la page contact complète →
+              </Link>
             </div>
           </div>
         </div>
